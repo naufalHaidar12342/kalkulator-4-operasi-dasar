@@ -143,17 +143,66 @@ public class MainActivity extends AppCompatActivity {
 
         angka1.setText("");
         angka2.setText("");
+
+        radioGroupOperasi.clearCheck();
     }
 
     public void pengurangan(){
+        //rumus : angka pertama - angka kedua
+        int getAngka1=Integer.parseInt(String.valueOf(angka1.getText()));
+        int getAngka2=Integer.parseInt(String.valueOf(angka2.getText()));
+
+        int hasil=getAngka1-getAngka2;
+        tampilkanHasilHitung.setText(String.valueOf(hasil));
+
+        final RiwayatHitung riwayatJumlah= new RiwayatHitung(getAngka1+" - "+getAngka2+" = "+hasil);
+        riwayatViewModel=new ViewModelProvider(this).get(RiwayatViewModel.class);
+        riwayatViewModel.insert(riwayatJumlah);
+
+        angka1.setText("");
+        angka2.setText("");
+
+        radioGroupOperasi.clearCheck();
 
     }
 
     public void perkalian(){
+        //rumus : angka pertama x angka kedua
+        int getAngka1=Integer.parseInt(String.valueOf(angka1.getText()));
+        int getAngka2=Integer.parseInt(String.valueOf(angka2.getText()));
 
+        int hasil=getAngka1 * getAngka2;
+        tampilkanHasilHitung.setText(String.valueOf(hasil));
+
+        final RiwayatHitung riwayatJumlah= new RiwayatHitung(getAngka1+" x "+getAngka2+" = "+hasil);
+        riwayatViewModel=new ViewModelProvider(this).get(RiwayatViewModel.class);
+        riwayatViewModel.insert(riwayatJumlah);
+
+        //clear input / bersihkan inputnya
+        angka1.setText("");
+        angka2.setText("");
+
+        radioGroupOperasi.clearCheck();
     }
 
     public void pembagian(){
+        //rumus : angka pertama / angka kedua
+        int getAngka1=Integer.parseInt(String.valueOf(angka1.getText()));
+        int getAngka2=Integer.parseInt(String.valueOf(angka2.getText()));
 
+        //
+        int hasil=getAngka1/getAngka2;
+        tampilkanHasilHitung.setText(String.valueOf(hasil));
+
+        //
+        final RiwayatHitung riwayatJumlah= new RiwayatHitung(getAngka1+" / "+getAngka2+" = "+hasil);
+        riwayatViewModel=new ViewModelProvider(this).get(RiwayatViewModel.class);
+        riwayatViewModel.insert(riwayatJumlah);
+
+        //clear input / bersihkan inputnya
+        angka1.setText("");
+        angka2.setText("");
+
+        radioGroupOperasi.clearCheck();
     }
 }
