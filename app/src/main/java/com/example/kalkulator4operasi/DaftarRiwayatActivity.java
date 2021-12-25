@@ -1,6 +1,7 @@
 package com.example.kalkulator4operasi;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -8,6 +9,7 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,12 +23,13 @@ public class DaftarRiwayatActivity extends AppCompatActivity {
     ArrayList<RiwayatHitung> listRiwayatnya;
     RecyclerView rvRiwayat;
     RiwayatHitungAdapter adapter;
+    AlertDialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_daftar_riwayat);
-        Toast.makeText(this,"Swipe kiri untuk hapus!",Toast.LENGTH_LONG).show();
+        Toast.makeText(this,"Swipe kiri untuk hapus, ya!",Toast.LENGTH_LONG).show();
 
         rvRiwayat =findViewById(R.id.recycleViewRiwayat);
         tvKeteranganDaftar=findViewById(R.id.tvKeterangan);
@@ -62,6 +65,20 @@ public class DaftarRiwayatActivity extends AppCompatActivity {
 
             }
         }).attachToRecyclerView(rvRiwayat);
+
+    }
+
+    private void caraHapus() {
+        dialog=new AlertDialog.Builder(DaftarRiwayatActivity.this)
+                .setTitle("Tips")
+                .setMessage("Swipe kiri untuk hapus, ya!")
+                .setPositiveButton("Siap!", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialog.dismiss();
+                    }
+                }).create();
+        dialog.create();
 
     }
 }
