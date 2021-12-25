@@ -38,6 +38,8 @@ public class MainActivity extends AppCompatActivity {
         hitung=findViewById(R.id.buttonHitung);
         tampilkanRiwayat=findViewById(R.id.buttonRiwayat);
 
+        memilihOperasiHitung();
+
         hitung.setOnClickListener(view -> {
             cekOperasi();
         });
@@ -45,6 +47,10 @@ public class MainActivity extends AppCompatActivity {
             Intent intent=new Intent(MainActivity.this,DaftarRiwayatActivity.class);
             startActivity(intent);
         });
+
+    }
+
+    public void memilihOperasiHitung(){
         tambah.setOnClickListener(view -> {
             //jika sudah memilih operasi penjumlahan
             Toast.makeText(getApplicationContext(),
@@ -79,7 +85,6 @@ public class MainActivity extends AppCompatActivity {
                     .show();
         });
     }
-
     public void cekOperasi(){
         /*membuat sebuah variabel yang bersifat final untuk menampung id dari masing masing button
          * Jika langsung menggunakan id dari tiap button (misal R.id.buttonTambah),

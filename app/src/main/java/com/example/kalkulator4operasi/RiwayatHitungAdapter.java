@@ -4,7 +4,6 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -14,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 public class RiwayatHitungAdapter extends RecyclerView.Adapter<RiwayatHitungAdapter.RiwayatHitungViewHolder> {
-    private List<RiwayatHitung> listRiwayat;
+    private final List<RiwayatHitung> listRiwayat;
 
 
     public RiwayatHitungAdapter(List<RiwayatHitung> listRiwayat) {
@@ -43,19 +42,19 @@ public class RiwayatHitungAdapter extends RecyclerView.Adapter<RiwayatHitungAdap
     public int getItemCount() {
         return listRiwayat.size();
     }
-
-    public class RiwayatHitungViewHolder extends RecyclerView.ViewHolder {
+    //mengambil lokasi dari item di dalam list
+    public RiwayatHitung riwayatDiLokasi(int position){
+        return listRiwayat.get(position);
+    }
+    public class RiwayatHitungViewHolder extends RecyclerView.ViewHolder  {
         TextView tampilkanRiwayat;
         ConstraintLayout layoutRiwayat;
-        ImageView tombolHapus;
+
         public RiwayatHitungViewHolder(@NonNull View itemView) {
             super(itemView);
             layoutRiwayat=itemView.findViewById(R.id.layout_satuan_riwayat);
             tampilkanRiwayat=itemView.findViewById(R.id.tvRiwayat);
-            tombolHapus=itemView.findViewById(R.id.buttonHapus);
-            tombolHapus.setOnClickListener(view -> {
 
-            });
         }
 
 
